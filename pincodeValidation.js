@@ -23,3 +23,11 @@ try {
 } catch (e) {
     console.error(e);
 }
+
+// validate pin code for 400088B
+try {
+    pinCode = `400088B`;
+    validatePinCode(pinCode);
+} catch (e) {
+    console.error(e);
+}
