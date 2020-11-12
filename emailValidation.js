@@ -1,4 +1,4 @@
-const regexEmail = RegExp(`^[\\w]+(?:[_+-\\.][\\w]+)*@(?=[a-z]+\\.)(?=[a-z]{2,})`);
+const regexEmail = RegExp(`^[\\w]+(?:[_+-\\.][\\w]+)*@(?:[a-z]+\\.){1,2}(?:[a-z]{2,})?$`);
 
 let validateEmailUtil = (email) => {
     console.log(`validating ${email}...`);
@@ -23,3 +23,5 @@ validateEmail(`abc@gmail`);
 validateEmail(`abc@gmail.co`);
 // validating first optional part
 validateEmail(`abc.xyz@gmail.co`);
+// validating second optional part
+validateEmail(`abc.xyz@gmail.co.in`);
