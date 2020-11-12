@@ -1,6 +1,6 @@
-const regexEmail = RegExp(`^[a-z]+@[a-z]+\\.[a-z]{2,}`);
+const regexEmail = RegExp(`^[\\w]+(?:[_+-\\.][\\w]+)*@(?=[a-z]+\\.)(?=[a-z]{2,})`);
 
-let validateEmail = (email) => {
+let validateEmailUtil = (email) => {
     console.log(`validating ${email}...`);
     if (regexEmail.test(email))
         console.log(`Email accepted.`);
@@ -8,24 +8,18 @@ let validateEmail = (email) => {
         throw `Invalid Email!`;
 }
 
-// validating first, second, third mandatory part
-try {
-    let email = `abcgmail`;
-    validateEmail(email);
-} catch (error) {
-    console.error(error);
+let validateEmail = (email) => {
+    try {
+        validateEmailUtil(email);
+    } catch (error) {
+        console.error(error);
+    }
 }
-
-try {
-    email = `abc@gmail`;
-    validateEmail(email);
-} catch (error) {
-    console.error(error);
-}
-
-try {
-    email = `abc@gmail.co`;
-    validateEmail(email);
-} catch (error) {
-    console.error(error);
-}
+// validating first mandatory part
+validateEmail(`abcgmail`);
+// validating second mandatory part
+validateEmail(`abc@gmail`);
+// validating third mandatory part
+validateEmail(`abc@gmail.co`);
+// validating first optional part
+validateEmail(`abc.xyz@gmail.co`);
